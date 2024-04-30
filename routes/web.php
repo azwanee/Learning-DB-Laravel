@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Barang;
+use App\Models\Siswa;
 use App\Modes\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -27,4 +28,17 @@ Route::get('/testmodel', function () {
 Route::get('/barang', function () {
     $data = Barang::all();
     return $data;
+});
+
+Route::get('/siswa', function () {
+    $siswa = new Siswa;
+    $siswa->Nama = "cigul";
+    $siswa->Jenis_Kelamin = "Perempuan";
+    $siswa->alamat = "Jakarta";
+    $siswa->agama = "Kristen";
+    $siswa->telepon = 2174;
+    $siswa->email = "cigul@gmail.com";
+    $siswa->save();
+
+    return $siswa;
 });
