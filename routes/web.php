@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Produk;
 use App\Models\Siswa;
 use App\Models\Telepon;
+use App\Models\Transaksi;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,4 +65,10 @@ Route::get('/merek', function () {
     $produk = Produk::all();
 
     return view('tampil_data', compact('produk'));
+});
+
+Route::get('/trans', function () {
+    $transaksi = Transaksi::all();
+
+    return view('tampil_transaksi', compact('transaksi'));
 });
