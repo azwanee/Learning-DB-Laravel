@@ -85,3 +85,12 @@ Route::get('post/{id}', [PostController::class, "show"]);
 
 Route::get('merek', [MerekController::class, "muncul"]);
 Route::get('merek/{id}', [MerekController::class, "show"]);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// CRUD Brand
+use App\Http\Controllers\BrandController;
+
+Route::resource('brand', BrandController::class);
