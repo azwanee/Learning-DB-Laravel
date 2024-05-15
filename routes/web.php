@@ -1,5 +1,8 @@
 <?php
 
+use App\http\Controllers\MerekController;
+use App\http\Controllers\PostController;
+use App\http\Controllers\ProdukController;
 use App\Models\Barang;
 use App\Models\Pengguna;
 use App\Models\Post;
@@ -72,3 +75,13 @@ Route::get('/trans', function () {
 
     return view('tampil_transaksi', compact('transaksi'));
 });
+
+// controller
+Route::get('produk', [ProdukController::class, "menampilkan"]);
+Route::get('produk/{id}', [ProdukController::class, "show"]);
+
+Route::get('post', [PostController::class, "tampil"]);
+Route::get('post/{id}', [PostController::class, "show"]);
+
+Route::get('merek', [MerekController::class, "muncul"]);
+Route::get('merek/{id}', [MerekController::class, "show"]);
