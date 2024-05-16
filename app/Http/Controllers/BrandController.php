@@ -63,7 +63,8 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        //
+        $brand = Brand::FindOrFail($id);
+        return view('Brands.edit', compact('brand'));
     }
 
     /**
@@ -75,7 +76,11 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $brand = Brand::FindOrFail($id);
+        $brand->Brand = $request->name_brand;
+        $brand->save();
+        return redirect()->route('brand.index');
+
     }
 
     /**
@@ -86,6 +91,8 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $brand = Brand::FindOrFail($id);
+        $brand->delete();
+        return redirect()->route('brand.index');
     }
 }

@@ -25,11 +25,15 @@
                             <tr>
                             <th scope="row">{{ $no++ }}</th>
                             <td>{{ $data->Brand }}</td>
-                            <td>
-                                <a href="" class="btn btn-success ms-4">Edit</a>
-                                <a href="{{route('brand.show', $data->id)}}" class="btn btn-warning ms-4">Show</a>
-                                <a href="" class="btn btn-danger ms-4">Delete</a>
-                            </td>
+                            <form action="{{route('brand.destroy', $data->id)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <td>
+                                    <a href="{{route('brand.edit', $data->id)}}" class="btn btn-success ms-4">Edit</a>
+                                    <a href="{{route('brand.show', $data->id)}}" class="btn btn-warning ms-4">Show</a>
+                                    <button type="submit" class="btn btn-danger ms-4">Delete</button>
+                                </td>
+                            </form>
                             </tr>
                         @endforeach
                     </tbody>
