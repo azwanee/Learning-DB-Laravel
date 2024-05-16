@@ -44,6 +44,13 @@ class ProductController extends Controller
         $product->Price = $request->price;
         $product->Description = $request->description;
         $product->id_brand = $request->id_brand;
+
+        if($request->hasFile('cover')){
+            $img = $request->file('cover');
+            $name = rand(1000,9999) . $img->getClientOriginalName();
+            $img->move('images/product',$name);
+            $product->cover = $name;
+        }
         $product->save();
         return redirect()->route('product.index')
             ->with('success', 'data berhasil di tambahkan');
@@ -93,6 +100,15 @@ class ProductController extends Controller
         $product->Price = $request->price;
         $product->Description = $request->description;
         $product->id_brand = $request->id_brand;
+
+        if ($request->hasFile('cover')) {
+            $product->deleteImage();
+            $img = $request->file('cover');
+            $name = rand(1000, 9999) . $img->getClientOriginalName();
+            $img->move('images/product', $name);
+            $product->cover = $name;
+        }
+
         $product->save();
         return redirect()->route('product.index')
             ->with('success', 'data berhasil diubah');

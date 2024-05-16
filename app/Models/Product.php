@@ -16,4 +16,10 @@ class Product extends Model
     {
         return $this->BelongsTo(Brand::class, 'id_brand');
     }
+
+    public function deleteImage(){
+        if($this->cover && file_exists(public_path('images/product' . $this->cover))){
+            return unlink(public_path('images/product' . $this->cover));
+        }
+    }
 }

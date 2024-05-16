@@ -21,6 +21,7 @@
                         <th scope="col">Price</th>
                         <th scope="col">Description</th>
                         <th scope="col">id_brand</th>
+                        <th scope="col">cover</th>
                         <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -35,18 +36,21 @@
                             <td>{{ $data->Price }}</td>
                             <td>{{ $data->Description }}</td>
                             <td>{{ $data-> brand->Brand }}</td>
+                            <td>
+                                <img src="{{asset('/images/product/' . $data->cover)}}" width="100">
+                            </td>
+                            <td>
                             <form action="{{route('product.destroy', $data->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <td>
                                     <a href="{{route('product.edit', $data->id)}}" class="btn btn-sm btn-success">Edit</a>
                                     <a href="{{route('product.show', $data->id)}}" class="btn btn-sm btn-warning">Show</a>
                                     <button class="btn btn-sm btn-danger" type="submit"
                                         onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
                                         Delete
                                     </button>
-                                </td>
-                            </form>
+                                </form>
+                            </td>
                             </tr>
                         @endforeach
                     </tbody>

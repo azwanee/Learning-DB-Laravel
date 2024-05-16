@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Add Data Product</div>
                 <div class="card-body">
-                    <form action="{{route('product.store')}}" method="POST">
+                    <form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Category Product</label>
@@ -28,6 +28,10 @@
                                     <option value="{{$data->id}}">{{$data->Brand}}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Cover</label>
+                            <input type="file" class="form-control" name="cover">
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                         <a href="{{url('product')}}" class="btn btn-primary ms-4">Back</a>

@@ -19,9 +19,10 @@ return new class extends Migration
             $table->Integer('Price');
             $table->String('Description');
             $table->unsignedBigInteger('id_brand');
+            $table->String('cover');
             $table->timestamps();
 
-            $table->foreign('id_brand')->references('id')->on('brand')->onDelete('cascade');
+            $table->foreign('id_brand')->references('id')->on('brands')->onDelete('cascade');
 
         });
     }
