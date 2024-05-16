@@ -9,7 +9,6 @@ class Produk extends Model
 {
     use HasFactory;
 
-    use HasFactory;
     protected $fillable = ['id', 'Nama_Produk', 'Jumlah', 'Tanggal_Produksi', 'id_merek'];
     public $timestamps = true;
 
